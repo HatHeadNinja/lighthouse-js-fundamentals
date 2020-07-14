@@ -1,17 +1,34 @@
 /* REQUIREMENTS
-1. Then, start working on your program by writing a loop that prints out all the numbers 
-from 100 to 200, inclusive. Only move on to the next step when that works.
+1. Refactor by writing a loop that prints out all the numbers 
+Wrap the code you've written in a function called loopyLighthouse(range, multiples, words) 
+that you call with 3 parameters.
 
-2. Next, pick a condition you want to start with, for example printing out "Loopy" 
-instead of multiples of 3. Figure out how you're going to check whether a number is 
-a multiple of 3, then write your if statement. To verify that it works, consider 
-calculating a few multiples of 3 by hand in a notebook (for example, 102, 105, 108, etc.), 
-then making sure they're being replaced with "Loopy" in your output.
+- range should be an array of 2 numbers representing the start and end values for the loop.
+- multiples should be an array of 2 numbers representing the multiples you want to replace 
+with words.
+- words should be an array of 2 strings representing the words that will replace the multiples.
+For example, say we called the function with the following arguments.
 
-3. Repeat the previous step with your remaining conditions one at a time until they all 
-work. It may help you be confident in your result if you've also calculated by hand a few 
-multiples of 4 and a few of both 3 and 4.
+loopyLighthouse([15, 90], [2, 5], ["Batty", "Beacon"]);
+The loopyLighthouse function should log to the console all the numbers from 15 to 90, 
+except replacing multiples of 2 with "Batty", multiples of 5 with "Beacon", 
+and multiples of 2 and 5 with "BattyBeacon".
 */
+
+function loopyLighthouse(range, multiples, words){
+  
+  // validate inputs
+  
+  // determine multiples
+
+  // determine words
+
+  // map multiples to words
+  
+  // loop through range
+
+}
+
 
 for (let i = 100; i <= 200; i++) {
   if (i % 3 === 0 && i % 4 === 0) {

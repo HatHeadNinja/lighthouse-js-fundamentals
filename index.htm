@@ -1,0 +1,29 @@
+<html>  
+  <head>  
+    <script type="text/javascript" src="message.js"></script>  
+  </head>  
+  <body>  
+    <p>Welcome to JavaScript</p>  
+    <form>
+      <p>Select a metric:</p>
+
+      <div>
+        <input type="radio" id="redness" name="metric" value="redness"
+         checked>
+        <label for="redness">Redness</label>
+      </div>
+
+      <div>
+        <input type="radio" id="plumpness" name="metric" value="plumpness">
+        <label for="plumpness">Plumpness</label>
+      </div>
+
+      <div>
+        <input type="radio" id="overall" name="metric" value="overall">
+        <label for="overall">Overall</label>
+      </div>
+      </br>
+      <input type="button" value="click" onclick="judgeVegetable(metric)"/>  
+    </form>  
+  </body>  
+</html>
