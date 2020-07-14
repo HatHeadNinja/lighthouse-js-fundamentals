@@ -29,8 +29,8 @@ function loopyLighthouse(range, multiples, words){
 
 }
 
-
-for (let i = 100; i <= 200; i++) {
+// old code
+/* for (let i = 100; i <= 200; i++) {
   if (i % 3 === 0 && i % 4 === 0) {
     console.log('LoopyLighthouse');
   } else if (i % 3 === 0 && i % 4 !== 0) {
@@ -40,4 +40,4 @@ for (let i = 100; i <= 200; i++) {
   } else {
     console.log(i);
   }
-}
+} */
