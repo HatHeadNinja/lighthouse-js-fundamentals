@@ -17,8 +17,36 @@ and multiples of 2 and 5 with "BattyBeacon".
 
 function loopyLighthouse(range, multiples, words){
   
-  // validate inputs
-  
+  // declare variables
+  const start = 0;
+  let halt;
+
+  // VALIDATE FUNCTION INPUTS:
+  // (don't the level of error checking required but
+  // since I blew up a screen last time, going all in!)
+  // range and multiples are numbers and words are strings
+  // range array is exactly 2 entries for start and stop
+  // multiples array length equal to words array length
+  //
+  // range
+  for (let i = 0; i < range.length; i++) {
+    let num = range[i];
+    if (isNaN(num)) {
+      return 'ERROR: range array value not a number: ' + num;
+    }
+  }  //console.log('range array values OK');
+  // multiples
+  for (let i = 0; i < multiples.length; i++) {
+    let num = multiples[i];
+    if (isNaN(num)) {
+      return 'ERROR: multiples array value not a number: ' + num;
+    }
+  } //console.log ('multiples array value OK');
+  // multiples array length === words array length
+  if (multiples.length !== words.length) {
+    return 'ERROR: number of multiples does not match number of words!'
+  } //console.log('number of multiples equals the number of words')
+
   // determine multiples
 
   // determine words
@@ -27,7 +55,11 @@ function loopyLighthouse(range, multiples, words){
   
   // loop through range
 
+  return 'Success - EOF!';
 }
+
+let loopL = loopyLighthouse([15, 90], [2, 5], ["Batty", "Beacon"]);
+console.log(loopL);
 
 // old code
 /* for (let i = 100; i <= 200; i++) {
