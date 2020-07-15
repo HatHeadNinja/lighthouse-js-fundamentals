@@ -17,49 +17,47 @@ and multiples of 2 and 5 with "BattyBeacon".
 
 function loopyLighthouse(range, multiples, words){
   
-  // declare variables
-  const start = 0;
-  let halt;
+  const errMsg = "'WHOA: invalid function parameter somewhere!";
 
   // VALIDATE FUNCTION INPUTS:
-  // (don't the level of error checking required but
-  // since I blew up a screen last time, going all in!)
-  // range and multiples are numbers and words are strings
-  // range array is exactly 2 entries for start and stop
-  // multiples array length equal to words array length
+  // (don't know the level of error checking required but since I blew up a submission screen last time, going all in!)
+  // - stop number is greater than start number
   //
-  // range
-  for (let i = 0; i < range.length; i++) {
-    let num = range[i];
-    if (isNaN(num)) {
-      return 'ERROR: range array value not a number: ' + num;
+  // check arrays only have 2 items and start is less than stop
+  if (range.length === 2 && multiples.length === 2 && words.length === 2 && range[0] < range[1]) {
+    for (let i = 0; i < range.length; i++) { //range and multiples are numbers and words are strings
+      if (typeof range[i] !== "number" || typeof multiples[i] !== "number" || typeof words[1] !== 'string') {
+        console.log(errMsg);
+      }
     }
-  }  //console.log('range array values OK');
-  // multiples
-  for (let i = 0; i < multiples.length; i++) {
-    let num = multiples[i];
-    if (isNaN(num)) {
-      return 'ERROR: multiples array value not a number: ' + num;
+    //console.log('OK: function parameters are valid'); 
+  } else { // error backstop
+    console.log(errMsg);
+  }
+
+  // MAIN LOGIC BLOCK
+  // loop through range, super hardcoded for arrays only having 2 correct values
+  let x = 1;
+  //console.log('range ' + range[0] + ":" + range[1] + " multiples " + multiples[0] + ":" + multiples[1]);
+  for (let r = range[0]; r <= range[1]; r++) {
+    if (r % multiples[0] === 0 && r % multiples[1] !== 0) {
+      console.log(words[0]);
+    } else if (r % multiples[0] !== 0 && r % multiples[1] === 0) {
+      console.log(words[1]);
+    } else if (r % multiples[0] === 0 && r % multiples[1] === 0) {
+      console.log(words[0] + words[1]);
+    } else if (r % (multiples[0] * multiples[1]) === 0) {
+      console.log(words[0] + words[1]);
+    } else {
+      console.log(r);
     }
-  } //console.log ('multiples array value OK');
-  // multiples array length === words array length
-  if (multiples.length !== words.length) {
-    return 'ERROR: number of multiples does not match number of words!'
-  } //console.log('number of multiples equals the number of words')
-
-  // determine multiples
-
-  // determine words
-
-  // map multiples to words
-  
-  // loop through range
-
-  return 'Success - EOF!';
+    //console.log("x: " + x + " r: " + r);
+    x++;
+  }
 }
 
-let loopL = loopyLighthouse([15, 90], [2, 5], ["Batty", "Beacon"]);
-console.log(loopL);
+loopyLighthouse([15, 90], [2, 5], ["Batty", "Beacon"]);
+
 
 // old code
 /* for (let i = 100; i <= 200; i++) {
