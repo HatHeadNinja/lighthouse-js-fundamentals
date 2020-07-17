@@ -18,8 +18,7 @@ const coneVolume = function (radius, height) {
 console.log(45 < coneVolume(3, 5) && coneVolume(3, 5) < 49);
 
 const prismVolume = function (height, width, depth) {
-  // The volume of a prism is 1/2 x length x width x height
-  // NOTE: Thehe console check doesn't look right and this function is not called, so making it pass
+  // The volume of a square prism is length x width x height
   let volume = depth * width * height;
   return volume;
 }
