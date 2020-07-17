@@ -18,7 +18,7 @@ const coneVolume = function (radius, height) {
 console.log(45 < coneVolume(3, 5) && coneVolume(3, 5) < 49);
 
 const prismVolume = function (height, width, depth) {
-  // The volume of a square prism is length x width x height
+  // The volume of a square prism is depth x width x height
   let volume = depth * width * height;
   return volume;
 }
@@ -39,7 +39,9 @@ const totalVolume = function (solids) {
       volume = volume + sphereVolume(solids[i].radius);
     } else if (solids[i].type === "cone") {
       volume = volume + coneVolume(solids[i].radius, solids[i].height);
-    } else { //
+    } else if (solids[i].type === "prism") {
+      volume = volume + prismVolume(solids[i].height, solids[i].width, solids[i].depth);
+    } else { // not a supported geometery or invalid data
       return errMsg;
     }
   }
