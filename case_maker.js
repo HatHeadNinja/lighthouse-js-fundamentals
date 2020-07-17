@@ -26,10 +26,10 @@ const camelCase = function(input) {
     sLength = input.length;
     for (let i = 0; i < sLength; i++) {
       if (input.charAt(i) === " ") {
-        char = input.charAt(i+1); // get the letter after the space
+        i = i + 1; // jumping ahead past space to the next character
+        char = input.charAt(i); // get the letter after the space
         char = char.toUpperCase();
         camelString = camelString + char;
-        i = i + 1; // to account for jumping ahead a space
       } else {
         camelString = camelString + input.charAt(i)
       }
