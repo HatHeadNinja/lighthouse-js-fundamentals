@@ -14,29 +14,7 @@ merge([ 1, 2, 6 ], []);	[ 1, 2, 6 ]
 
 function merge(aNumbers, bNumbers) {
   let sortedArray = [];
-  let aLength = aNumbers.length;
-  let bLength = bNumbers.length;
-  let errMsg = 'WHOA: invalid value!';
-
-  // build an array of values from both arrays
-  for (let i = 0; i < aLength; i++) {
-    // make sure the array field value is a number
-    if (typeof aNumbers[i] === 'number') {
-      sortedArray.push(aNumbers[i]);
-    } else {
-      return errMsg;
-    }
-  }
-  for (let i = 0; i < bLength; i++) {
-    // make sure the array field value is a number
-    if (typeof bNumbers[i] === 'number') {
-      sortedArray.push(bNumbers[i]);
-    } else {
-      return errMsg;
-    }
-    
-  }
-  // sort and return the merged array
+  sortedArray = aNumbers.concat(bNumbers);
   sortedArray.sort(function(a, b) { return a - b });
   return sortedArray;
 }

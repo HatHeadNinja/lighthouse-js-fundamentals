@@ -74,7 +74,12 @@ const chooseRecipe = function(bakeryA, bakeryB, recipes) {
   
   // local function for checking recipes object
   function ingredientCheck(ingredients) {
-    let bakeryRecipes = [];
+    let bakeryRecipes =  [
+      /*{
+        name: '',
+        ingredient: ''
+      }*/
+    ]; 
     // each ingredient provided
     for (let i = 0; i < ingredients.length; i++) {
       // each recipe
@@ -84,7 +89,15 @@ const chooseRecipe = function(bakeryA, bakeryB, recipes) {
           // check matches of provided ingredient to recipe ingredient
           if (recipes[r].ingredients[ri] === ingredients[i]) {
             // add recipe match to array of possible recipes
-            bakeryRecipes.push(recipes[r].name);
+            bakeryRecipes.push(recipes[r].name, recipes[r].ingredients[ri]);
+            console.log('Match found');
+            console.log(bakeryRecipes);
+            /* bakeryRecipes.push[i].name = recipes[r].name
+            console.log('bakeryRecipes.name:')
+            console.log(bakeryRecipes.name);
+            bakeryRecipes[i].ingredients = recipes[r].ingredients[ri];
+            console.log('bakeryRecipes.ingredients: ');
+            console.log(bakeryRecipes.ingredients); */
           }
         }
       }
@@ -94,6 +107,7 @@ const chooseRecipe = function(bakeryA, bakeryB, recipes) {
 
   // loop through possible bakery recipes for each bakery and find matches
   for (let a = 0; a < aBakeryRecipes.length; a++) { // Bakery A
+    //console.log(aBakeryRecipes);
     for (let b = 0; b < bBakeryRecipes.length; b++) { // Bakery B
       if (aBakeryRecipes[a] === bBakeryRecipes[b]) { // Check for recipe match
         return aBakeryRecipes[a]; // return match
@@ -142,4 +156,4 @@ recipes = [
     }
 ];
 
-console.log(chooseRecipe(bakeryA, bakeryB, recipes));
+//console.log(chooseRecipe(bakeryA, bakeryB, recipes));
