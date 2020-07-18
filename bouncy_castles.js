@@ -31,7 +31,7 @@ const totalVolume = function (solids) {
   // volume of an attraction.
   let volume = 0;
   let oLength = solids.length;
-  let errMsg = 'WHOA! Some of your geometery not supported!';
+  let errMsg = 'WHOA! Some of your geometery is not supported!';
 
   // loop through solids object
   for (let i = 0; i < oLength; i++) {
