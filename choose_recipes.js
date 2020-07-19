@@ -17,18 +17,18 @@ TEST INPUTS!!!
 let bakeryA = ['saffron', 'eggs', 'tomato paste', 'coconut', 'custard'];
 let bakeryB = ['milk', 'butter', 'cream cheese'];
 let recipes = [
-    {
-        name: 'Coconut Sponge Cake',
-        ingredients: ['coconut', 'cake base']
-    },
-    {
-        name: 'Persian Cheesecake',
-        ingredients: ['saffron', 'cream cheese']
-    },
-    {
-        name: 'Custard Surprise',
-        ingredients: ['custard', 'ground beef']
-    }
+  {
+      name: 'Coconut Sponge Cake',
+      ingredients: ['coconut', 'cake base']
+  },
+  {
+      name: 'Persian Cheesecake',
+      ingredients: ['saffron', 'cream cheese']
+  },
+  {
+      name: 'Custard Surprise',
+      ingredients: ['custard', 'ground beef']
+  }
 ];
 
 console.log(chooseRecipe(bakeryA, bakeryB, recipes));
@@ -36,18 +36,18 @@ console.log(chooseRecipe(bakeryA, bakeryB, recipes));
 bakeryA = ['potatoes', 'bay leaf', 'raisins'];
 bakeryB = ['red bean', 'dijon mustard', 'apples'];
 recipes = [
-    {
-        name: 'Potato Ganache',
-        ingredients: ['potatoes', 'chocolate']
-    },
-    {
-        name: 'Sweet Fish',
-        ingredients: ['anchovies', 'honey']
-    },
-    {
-        name: "Nima's Famous Dijon Raisins",
-        ingredients: ['dijon mustard', 'raisins']
-    }
+  {
+      name: 'Potato Ganache',
+      ingredients: ['potatoes', 'chocolate']
+  },
+  {
+      name: 'Sweet Fish',
+      ingredients: ['anchovies', 'honey']
+  },
+  {
+      name: "Nima's Famous Dijon Raisins",
+      ingredients: ['dijon mustard', 'raisins']
+  }
 ];
 
 console.log(chooseRecipe(bakeryA, bakeryB, recipes));
@@ -68,51 +68,51 @@ DD: delberately did not invest in robust error checking or computational optimiz
 */
 
 const chooseRecipe = function(bakeryA, bakeryB, recipes) {
-  let aBakeryRecipes = ingredientCheck(bakeryA);
-  let bBakeryRecipes = ingredientCheck(bakeryB);
-  let foundRecipe = '';
-  
-  // local function for checking recipes object
-  function ingredientCheck(ingredients) {
-    let bakeryRecipes =  [];
-    let bakeryRecipeObject = {
-      recipe: '',
-      ingredient: ''
-    };
-  
-    // each ingredient provided
-    for (let i = 0; i < ingredients.length; i++) {
-      // each recipe
-      for (let r = 0; r < recipes.length; r++) {
-        // each recipe ingredient
-        for (let ri = 0; ri < recipes[r].ingredients.length; ri++) {
-          // check matches of provided ingredient to recipe ingredient
-          if (recipes[r].ingredients[ri] === ingredients[i]) {
-            // add recipe match to array of possible recipes
-            // I don't like this below approach of setting and immediately 
-            // wiping an object just to add new values to an array within an object - open to feedback!!!
-            bakeryRecipeObject.recipe = recipes[r].name;
-            bakeryRecipeObject.ingredient = recipes[r].ingredients[ri];
-            bakeryRecipes.push(bakeryRecipeObject);
-            bakeryRecipeObject = {};
-          }
+let aBakeryRecipes = ingredientCheck(bakeryA);
+let bBakeryRecipes = ingredientCheck(bakeryB);
+let foundRecipe = '';
+
+// local function for checking recipes object
+function ingredientCheck(ingredients) {
+  let bakeryRecipes =  [];
+  let bakeryRecipeObject = {
+    recipe: '',
+    ingredient: ''
+  };
+
+  // each ingredient provided
+  for (let i = 0; i < ingredients.length; i++) {
+    // each recipe
+    for (let r = 0; r < recipes.length; r++) {
+      // each recipe ingredient
+      for (let ri = 0; ri < recipes[r].ingredients.length; ri++) {
+        // check matches of provided ingredient to recipe ingredient
+        if (recipes[r].ingredients[ri] === ingredients[i]) {
+          // add recipe match to array of possible recipes
+          // I don't like this below approach of setting and immediately 
+          // wiping an object just to add new values to an array within an object - open to feedback!!!
+          bakeryRecipeObject.recipe = recipes[r].name;
+          bakeryRecipeObject.ingredient = recipes[r].ingredients[ri];
+          bakeryRecipes.push(bakeryRecipeObject);
+          bakeryRecipeObject = {};
         }
       }
     }
-    return bakeryRecipes;
   }
+  return bakeryRecipes;
+}
 
-  // loop through possible bakery recipes for each bakery and find matches
-  for (let a = 0; a < aBakeryRecipes.length; a++) { // Bakery A
-    for (let b = 0; b < bBakeryRecipes.length; b++) { // Bakery B
-      // check bakeries collectively have all of the ingredients required to make a recipe
-      if (aBakeryRecipes[a].recipe === bBakeryRecipes[b].recipe && aBakeryRecipes[a].ingredient !== bBakeryRecipes[b].ingredient) { // Check for recipe match
-        return aBakeryRecipes[a].recipe; // return match
-      }
+// loop through possible bakery recipes for each bakery and find matches
+for (let a = 0; a < aBakeryRecipes.length; a++) { // Bakery A
+  for (let b = 0; b < bBakeryRecipes.length; b++) { // Bakery B
+    // check bakeries collectively have all of the ingredients required to make a recipe
+    if (aBakeryRecipes[a].recipe === bBakeryRecipes[b].recipe && aBakeryRecipes[a].ingredient !== bBakeryRecipes[b].ingredient) { // Check for recipe match
+      return aBakeryRecipes[a].recipe; // return match
     }
   }
-  // if we made this far, then there no matching recipes
-  return 'No matching recipes for ingredients found!';
+}
+// if we made this far, then there no matching recipes
+return 'No matching recipes for ingredients found!';
 }
 
 
@@ -120,18 +120,18 @@ const chooseRecipe = function(bakeryA, bakeryB, recipes) {
 let bakeryA = ['saffron', 'eggs', 'tomato paste', 'coconut', 'custard'];
 let bakeryB = ['milk', 'butter', 'cream cheese'];
 let recipes = [
-    {
-        name: 'Coconut Sponge Cake',
-        ingredients: ['coconut', 'cake base']
-    },
-    {
-        name: 'Persian Cheesecake',
-        ingredients: ['saffron', 'cream cheese']
-    },
-    {
-        name: 'Custard Surprise',
-        ingredients: ['custard', 'ground beef']
-    }
+  {
+      name: 'Coconut Sponge Cake',
+      ingredients: ['coconut', 'cake base']
+  },
+  {
+      name: 'Persian Cheesecake',
+      ingredients: ['saffron', 'cream cheese']
+  },
+  {
+      name: 'Custard Surprise',
+      ingredients: ['custard', 'ground beef']
+  }
 ];
 
 console.log(chooseRecipe(bakeryA, bakeryB, recipes));
@@ -139,18 +139,18 @@ console.log(chooseRecipe(bakeryA, bakeryB, recipes));
 bakeryA = ['potatoes', 'bay leaf', 'raisins'];
 bakeryB = ['red bean', 'dijon mustard', 'apples'];
 recipes = [
-    {
-        name: 'Potato Ganache',
-        ingredients: ['potatoes', 'chocolate']
-    },
-    {
-        name: 'Sweet Fish',
-        ingredients: ['anchovies', 'honey']
-    },
-    {
-        name: "Nima's Famous Dijon Raisins",
-        ingredients: ['dijon mustard', 'raisins']
-    }
+  {
+      name: 'Potato Ganache',
+      ingredients: ['potatoes', 'chocolate']
+  },
+  {
+      name: 'Sweet Fish',
+      ingredients: ['anchovies', 'honey']
+  },
+  {
+      name: "Nima's Famous Dijon Raisins",
+      ingredients: ['dijon mustard', 'raisins']
+  }
 ];
 
 console.log(chooseRecipe(bakeryA, bakeryB, recipes));
