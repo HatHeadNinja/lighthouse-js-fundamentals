@@ -14,10 +14,9 @@ console.log(talkingCalendar("1987/08/24"));  // output: August 24th, 1987
 const talkingCalendar = function(date) {
   let englishDate = '';
 
-  // local function to map and return month
+  // local function to map number and return month name
   function month(monthNum) {
     let englishMonth = '';
-    let errMsg = 'Invalid month value!';
 
     for (let i = 0; i < 12; i++) {
       switch (monthNum) {
@@ -58,7 +57,7 @@ const talkingCalendar = function(date) {
           englishMonth = 'December';
           break;
         default: // invalid input parameter value
-          englishMonth = errMsg;
+          englishMonth = 'Invalid month value!';
       }
     }
     return englishMonth;
@@ -67,24 +66,22 @@ const talkingCalendar = function(date) {
   // local function to map and return day
   function day(dayNum) {
     let englishDay = '';
-    let lastDigit = dayNum.length - 1; // for use parsing string indices
+    let lastDigit = dayNum.length - 1; // for use parsing substrings
 
     // trim '0' from 0 index for first 9 days of month
-    if (dayNum.substr(0,1) === '0') {
-      dayNum = dayNum.substr(1,1);
+    if (dayNum.startsWith('0')) {
+      dayNum = dayNum.charAt(1);
     }
     
     // build the english day
-    for (let i = 0; i < 4; i++) {
-      if (dayNum.charAt(lastDigit) === '1' && dayNum !== '11') {
-        englishDay === dayNum + 'st';
-      } else if (dayNum.charAt(lastDigit) === '2') {
-        englishDay = dayNum + 'nd';
-      } else if (dayNum.charAt(lastDigit) === '3') {
-        englishDay = dayNum + 'rd';
-      } else {
-        englishDay = dayNum + 'th';
-      }
+    if (dayNum.charAt(lastDigit) === '1' && dayNum !== '11') {
+      englishDay = dayNum + 'st';
+    } else if (dayNum.charAt(lastDigit) === '2') {
+      englishDay = dayNum + 'nd';
+    } else if (dayNum.charAt(lastDigit) === '3') {
+      englishDay = dayNum + 'rd';
+    } else { // everything else
+      englishDay = dayNum + 'th';
     }
     return englishDay;
   }
@@ -95,7 +92,7 @@ const talkingCalendar = function(date) {
   // parse day and pass into local month function for English day
   let englishDay = day(date.substr(8,2));
   
-  // construct englishDate and add to English year to end
+  // construct englishDate and parse & add English year to end
   englishDate = englishMonth + " " + englishDay +', ' + date.substr(0,4);
 
   return englishDate;
