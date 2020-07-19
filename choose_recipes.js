@@ -90,7 +90,7 @@ const chooseRecipe = function(bakeryA, bakeryB, recipes) {
           if (recipes[r].ingredients[ri] === ingredients[i]) {
             // add recipe match to array of possible recipes
             // I don't like this below approach of setting and immediately 
-            // wiping an object just to add new values to an object - open to feedback!!!
+            // wiping an object just to add new values to an array within an object - open to feedback!!!
             bakeryRecipeObject.recipe = recipes[r].name;
             bakeryRecipeObject.ingredient = recipes[r].ingredients[ri];
             bakeryRecipes.push(bakeryRecipeObject);
