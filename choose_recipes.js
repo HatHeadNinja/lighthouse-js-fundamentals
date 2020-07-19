@@ -74,12 +74,12 @@ const chooseRecipe = function(bakeryA, bakeryB, recipes) {
   
   // local function for checking recipes object
   function ingredientCheck(ingredients) {
-    let bakeryRecipes =  [
-      /*{
-        name: '',
-        ingredient: ''
-      }*/
-    ]; 
+    let bakeryRecipes =  [];
+    let bakeryRecipeObject = {
+      recipe: '',
+      ingredient: ''
+    };
+  
     // each ingredient provided
     for (let i = 0; i < ingredients.length; i++) {
       // each recipe
@@ -89,15 +89,12 @@ const chooseRecipe = function(bakeryA, bakeryB, recipes) {
           // check matches of provided ingredient to recipe ingredient
           if (recipes[r].ingredients[ri] === ingredients[i]) {
             // add recipe match to array of possible recipes
-            bakeryRecipes.push(recipes[r].name, recipes[r].ingredients[ri]);
-            console.log('Match found');
-            console.log(bakeryRecipes);
-            /* bakeryRecipes.push[i].name = recipes[r].name
-            console.log('bakeryRecipes.name:')
-            console.log(bakeryRecipes.name);
-            bakeryRecipes[i].ingredients = recipes[r].ingredients[ri];
-            console.log('bakeryRecipes.ingredients: ');
-            console.log(bakeryRecipes.ingredients); */
+            // I don't like this below approach of setting and immediately 
+            // wiping an object just to add new values to an object - open to feedback!!!
+            bakeryRecipeObject.recipe = recipes[r].name;
+            bakeryRecipeObject.ingredient = recipes[r].ingredients[ri];
+            bakeryRecipes.push(bakeryRecipeObject);
+            bakeryRecipeObject = {};
           }
         }
       }
@@ -107,10 +104,10 @@ const chooseRecipe = function(bakeryA, bakeryB, recipes) {
 
   // loop through possible bakery recipes for each bakery and find matches
   for (let a = 0; a < aBakeryRecipes.length; a++) { // Bakery A
-    //console.log(aBakeryRecipes);
     for (let b = 0; b < bBakeryRecipes.length; b++) { // Bakery B
-      if (aBakeryRecipes[a] === bBakeryRecipes[b]) { // Check for recipe match
-        return aBakeryRecipes[a]; // return match
+      // check bakeries collectively have all of the ingredients required to make a recipe
+      if (aBakeryRecipes[a].recipe === bBakeryRecipes[b].recipe && aBakeryRecipes[a].ingredient !== bBakeryRecipes[b].ingredient) { // Check for recipe match
+        return aBakeryRecipes[a].recipe; // return match
       }
     }
   }
@@ -156,4 +153,4 @@ recipes = [
     }
 ];
 
-//console.log(chooseRecipe(bakeryA, bakeryB, recipes));
+console.log(chooseRecipe(bakeryA, bakeryB, recipes));
