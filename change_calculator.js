@@ -34,12 +34,12 @@ console.log(calculateChange(501, 1000));  //{ twoDollar: 2, quarter: 3, dime: 2,
 const calculateChange = function(total, cash) {
   let correctChangeRemaining = cash - total;
   let currencyUnits = 0;
-  let correctChange = [];
+  let correctChange = {};
 
   // validate inputs are numbers and not less than zero
   // and that cash is greater than price total
   if (total > 0 && cash > 0 && cash >= total) {
-    console.log('SOF - correctChangeRemaining: ' + correctChangeRemaining);
+    //console.log('SOF - correctChangeRemaining: ' + correctChangeRemaining);
     // exact cash provided, no change necessary
     if (correctChangeRemaining === 0) {
       return 'Exact change provided. No change required';
@@ -50,19 +50,19 @@ const calculateChange = function(total, cash) {
     else if (correctChangeRemaining >= 2000 ) {
       currencyUnits = Math.floor(correctChangeRemaining / 2000);// / 2000);
       //console.log('20s currencyUnits: ' + currencyUnits);
-      correctChange.push('twentyDollar: ' + currencyUnits);
+      correctChange.twentyDollar = currencyUnits;
       correctChangeRemaining = correctChangeRemaining - (currencyUnits * 2000);
     }
     // $10 bills
     if (correctChangeRemaining >= 1000 ) {
       //console.log('10s correctChangeRemaining: ' + correctChangeRemaining);
-      correctChange.push('tenDollar: 1');
+      correctChange.tenDollar = 1;
       correctChangeRemaining = correctChangeRemaining - (1000);
     } 
     // $5 bills
     if (correctChangeRemaining >= 500 ) {
       //console.log('5s correctChangeRemaining: ' + correctChangeRemaining);
-      correctChange.push('fiveDollar: 1');
+      correctChange.fiveDollar = 1;
       correctChangeRemaining = correctChangeRemaining - (500);
     }
     // $2 toonies
@@ -70,7 +70,7 @@ const calculateChange = function(total, cash) {
       //console.log('2s correctChangeRemaining: ' + correctChangeRemaining);
       currencyUnits = Math.floor(correctChangeRemaining  / 200);
       //console.log('2s currencyUnits: ' + currencyUnits);
-      correctChange.push('twoDollar: ' + currencyUnits);
+      correctChange.twoDollar = currencyUnits;
       correctChangeRemaining = correctChangeRemaining - (currencyUnits * 200);
     }
     // $1 loonies
@@ -78,7 +78,7 @@ const calculateChange = function(total, cash) {
     if (correctChangeRemaining >= 100 ) {
       //console.log('1s correctChangeRemaining: ' + correctChangeRemaining);
       currencyUnits = Math.floor(correctChangeRemaining / 100);
-      correctChange.push('oneDollar: ' + currencyUnits);
+      correctChange.oneDollar = currencyUnits;
       correctChangeRemaining = correctChangeRemaining - (currencyUnits * 100);
     }
     // .25 quarters
@@ -87,7 +87,7 @@ const calculateChange = function(total, cash) {
       //console.log('.25s correctChangeRemaining: ' + correctChangeRemaining);
       currencyUnits = Math.floor(correctChangeRemaining / 25);
       //console.log('quarter: ' + currencyUnits);
-      correctChange.push('quarter: ' + currencyUnits);
+      correctChange.quarter = currencyUnits;
       correctChangeRemaining = correctChangeRemaining - (currencyUnits * 25);
     }
     // .10 dimes
@@ -95,7 +95,7 @@ const calculateChange = function(total, cash) {
     if (correctChangeRemaining >= 10 ) {
       currencyUnits = Math.floor(correctChangeRemaining / 10);
       //console.log('dime: ' + currencyUnits);
-      correctChange.push('dime: ' + currencyUnits);
+      correctChange.dime = currencyUnits;
       correctChangeRemaining = correctChangeRemaining - (currencyUnits * 10);
     }
     // .05 nickels
@@ -103,12 +103,12 @@ const calculateChange = function(total, cash) {
     if (correctChangeRemaining >= 5 ) {
       currencyUnits = Math.floor(correctChangeRemaining / 5);
       //console.log('nickel: ' + currencyUnits);
-      correctChange.push('nickel: ' + currencyUnits);
+      correctChange.nickel = currencyUnits;
       correctChangeRemaining = correctChangeRemaining - (currencyUnits * 5);
     }
     // .01 penny
     //console.log('penny correctChangeRemaining: '+ correctChangeRemaining);
-    correctChange.push('penny: ' + correctChangeRemaining);
+    correctChange.penny = correctChangeRemaining;
 
   } else { // not a valid function input value
     return 'ERROR! Invalid value provided.'
@@ -117,7 +117,7 @@ const calculateChange = function(total, cash) {
   return correctChange;
 }
 
-console.log(calculateChange(200,5000));
-//console.log(calculateChange(1787, 2000)); // { twoDollar: 1, dime: 1, penny: 3 }
-//console.log(calculateChange(2623, 4000)); // { tenDollar: 1, twoDollar: 1, oneDollar: 1, quarter: 3, penny: 2 }
-//console.log(calculateChange(501, 1000)); // { twoDollar: 2, quarter: 3, dime: 2, penny: 4 }
+//console.log(calculateChange(200,5000));
+console.log(calculateChange(1787, 2000)); // { twoDollar: 1, dime: 1, penny: 3 }
+console.log(calculateChange(2623, 4000)); // { tenDollar: 1, twoDollar: 1, oneDollar: 1, quarter: 3, penny: 2 }
+console.log(calculateChange(501, 1000)); // { twoDollar: 2, quarter: 3, dime: 2, penny: 4 }
