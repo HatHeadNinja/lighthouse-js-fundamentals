@@ -21,7 +21,7 @@ function loopyLighthouse(range, multiples, words){
 
   // VALIDATE FUNCTION INPUTS:
   // (don't know the level of error checking required but since I blew up a submission screen last time, going all in!)
-  // - stop number is greater than start number
+  // * stop number is greater than start number
   //
   // check arrays only have 2 items and start is less than stop
   if (range.length === 2 && multiples.length === 2 && words.length === 2 && range[0] < range[1]) {
@@ -37,23 +37,25 @@ function loopyLighthouse(range, multiples, words){
 
   // MAIN LOGIC BLOCK
   // loop through range, super hardcoded for arrays only having 2 correct values
-  let x = 1;
   //console.log('range ' + range[0] + ":" + range[1] + " multiples " + multiples[0] + ":" + multiples[1]);
   for (let r = range[0]; r <= range[1]; r++) {
+    let result = '';
+    if (r % multiples[0] === 0) {
+      result += words[0];
+    }
     if (r % multiples[0] === 0 && r % multiples[1] !== 0) {
-      console.log(words[0]);
-    } else if (r % multiples[0] !== 0 && r % multiples[1] === 0) {
-      console.log(words[1]);
-    } else if (r % multiples[0] === 0 && r % multiples[1] === 0) {
-      console.log(words[0] + words[1]);
-    } else if (r % (multiples[0] * multiples[1]) === 0) {
-      console.log(words[0] + words[1]);
+      console.log(words[0]); // =3
+    } else if 
+      (r % multiples[0] !== 0 && r % multiples[1] === 0) {
+      console.log(words[1]); // =4
+    } else if 
+      (r % multiples[0] === 0 && r % multiples[1] === 0) {
+      console.log(words[0] + words[1]); // equal both
     } else {
       console.log(r);
     }
     //console.log("x: " + x + " r: " + r);
-    x++;
-  }
+   }
 }
 
 loopyLighthouse([15, 90], [2, 5], ["Batty", "Beacon"]);
